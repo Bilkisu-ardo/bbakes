@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,27 +14,26 @@
 <div class="container">
 	<div class="navbar">
 		<div class="logo">
-			<img src="b.jpg" width="120px">
+			<img src="images/b.jpg" width="120px">
 		</div>
 		<nav>
 			<ul id="menuitems">
 				<li><a href="index.html">Home</a></li>
-				<li><a href="products.html">Products</a></li>
+				<li><a href="products.html">Menu</a></li>
 				<li><a href="aboutpage.html">About</a></li>
 				<li><a href="contactpage1.html">Contact</a></li>
-				<li><a href="account.html">Account</a></li>
+				<li><a href="feedback.html">Feedback</a></li>
+				<li><a href="profile.html">Profile</a></li>
 			</ul>
 		</nav>
-		<a href="Cart-page.html"><img src="cart.png" width="30px height="30px></a>
-		<img src="menuu.png" width="30px height="30px onclick="menutoggle()">
+		<a href="Cart-page.html"><img src="images/cart.png" width="30px" height="30px"></a>
+		<img src="images/menuu.png" width="30px" height="30px" onclick="menutoggle()">
 		
 	</div>
 </div>
-<!------------cart items details--------------->
 
-	<div class="small-container cart-page">
-
-		<table>
+<div class="small-container cart-page">
+	<table id="cart-table">
 		<tr>
 			<th>Product</th>
 			<th>Quantity</th>
@@ -44,155 +42,74 @@
 		<tr>
 			<td>
 				<div class="cart-info">
-					<a href="product-details.html"><img src="b6.jpg"></a>
+					<a href="product-details.html"><img src="images/b6.jpg"></a>
 					<div>
 						<p>Chocolate Euphoria</p>
-						<small>Price:N3,800</small>
-					
+						<small>Price: N3,800</small>
 					</div>
 				</div>
 			</td>
-			<td><input type="number" value="1"></td>
+			<td><input type="number" value="1" onchange="calculateTotal()"></td>
 			<td>N3,800</td>
 		</tr>
-
 		<tr>
 			<td>
 				<div class="cart-info">
-					<a href="product-details.html"><img src="b5.jpg"></a>
+					<a href="product-details.html"><img src="images/b5.jpg"></a>
 					<div>
 						<p>Cookies Oh Cream</p>
-						<small>Price:N3,800</small>
-						<br>
-					
+						<small>Price: N3,800</small>
 					</div>
 				</div>
 			</td>
-			<td><input type="number" value="1"></td>
+			<td><input type="number" value="1" onchange="calculateTotal()"></td>
 			<td>N3,800</td>
 		</tr>
 	</table>
 
 	<div class="total-price">
-		
 		<table>
 			<tr>
 				<td>Subtotal</td>
-				<td>N7,600.00</td>
+				<td id="subtotal">N7,600.00</td>
 			</tr>
 			<tr>
 				<td>Tax</td>
-				<td>N100.00</td>
+				<td id="tax">N100.00</td>
 			</tr>
 			<tr>
 				<td>Total</td>
-				<td>7,700.00</td>
+				<td id="total">N7,700.00</td>
 			</tr>
-
 		</table>
-
 	</div>
-	<a href="payment.html">Proceed To Payment</a>
-
-	
-
-
-
-   <!--------------------footer------------------>
-<br>
-
-
-<div class="footer">
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="footer-col-1">
-
-				<h3>CONNECT WITH US</h3>
-
-				<p>Don't Miss Out! </p>
-
-				</div>
-
-			</div>
-
-			
-
-			<div class="footer-col-2">
-
-				<img id="logo_img" src="b.jpg">
-
-			</div>
-
-
-
-			<div class="footer-col-3">
-
-				<h3>FOLLOW US </h3>
-
-				<ul>
-
-					<li>
-
-						<h5>@BBAKES</h5>
-					</li>on
-
-					<div class="app-logo">
-					 <a href="https://www.instagram.com/b___bakes/" target="_blank">
-						 <img src="insta.jpg" alt="Instagram Logo">
-					 </a>
-				 </div>					
-
-			<div class="footer-col-4">
-
-				<h3>HELP</h3>
-
-				<ul>
-
-					<a href="mailto:bilkeesuardo@gmail.com?subject=subject text"><li> For queries,<br>Contact</li></a>
-				
-				</ul>
-
-			</div>
-
-		</div>
-
-		<hr>
-
-		<p class="Copyright"> Copyright 2023 <br> All rights reserved.</p>
-
-	</div>
-
+	<button><a href="checkout.html">Proceed To Checkout</a></button>
 </div>
-   <!------js for toggle menu----->
 
-  <script>
+<script>
+	function calculateTotal() {
+		const table = document.getElementById('cart-table');
+		const rows = table.getElementsByTagName('tr');
+		let subtotal = 0;
 
-	  const menuitems= document.getElementById('menuitems');
+		for (let i = 1; i < rows.length; i++) {
+			const row = rows[i];
+			const quantity = parseInt(row.getElementsByTagName('input')[0].value);
+			const priceText = row.getElementsByTagName('small')[0].innerText;
+			const price = parseInt(priceText.replace(/\D/g, ''));
+			const rowTotal = quantity * price;
+			subtotal += rowTotal;
+			row.getElementsByTagName('td')[2].innerText = 'N' + rowTotal.toFixed(2);
+		}
 
-	  let isMenuHidden = true
+		const tax = 100; // Assuming tax is fixed
+		const total = subtotal + tax;
 
-	  const menutoggle  = () => {
-
-		  if(isMenuHidden){
-
-			  menuitems.style.transform = 'translateY(10px)'
-
-			  isMenuHidden = false
-
-		  }else{
-
-			  menuitems.style.transform = 'translateY(-320%)'
-
-			  isMenuHidden = true
-
-		  }
-
-	  }  
-
-  </script>
+		document.getElementById('subtotal').innerText = 'N' + subtotal.toFixed(2);
+		document.getElementById('tax').innerText = 'N' + tax.toFixed(2);
+		document.getElementById('total').innerText = 'N' + total.toFixed(2);
+	}
+</script>
 
 </body>
 </html>

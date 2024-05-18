@@ -1,127 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>All Products-B BAKES</title>
-	<link rel="stylesheet" type="text/css" href="style1.css">
-	<link href="<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;1,600&family=Poppins&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - B BAKES</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;1,600&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-<div class="container">
-	<div class="navbar">
-		<div class="logo">
-			<img src="images/b.jpg" width="120px">
-		</div>
-		<nav>
-			<ul id="menuitems">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="products.html">Menu</a></li>
-				<li><a href="aboutpage.html">About</a></li>
-				<li><a href="contactpage1.html">Contact</a></li>
-				<li><a href="feedback.html">Feedback</a></li>
-				<li><a href="profile.html">Profile</a></li>
-			</ul>
-		</nav>
-		<a href="Cart-page.html"><img src="images/cart.png" width="30px height="30px></a>
-		<img src="images/menuu.png" width="30px height="30px onclick="menutoggle()">
-		
-	</div>
-</div>
-
-    <section style="color:#2D0C57; margin-top: 20px; padding-bottom: 20px; text-align: center;">
-
-        <h2>Contact Us</h2>
-
-        <div style="padding-top:20px; padding-bottom:30px;">
-            <a href="tel:+0123456789"><button type="button" class="btn btn-success" style="width:200px; color: white;"><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;Call Now</button></a>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/b.jpg" width="120px">
+            </div>
+            <nav>
+                <ul id="menuitems">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Menu</a></li>
+                    <li><a href="aboutpage.html">About</a></li>
+                    <li><a href="contactpage1.html">Contact</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+            <a href="Cart-page.html"><img src="images/cart.png" width="30px" height="30px"></a>
+            <img src="images/menuu.png" width="30px" height="30px" onclick="menutoggle()">
         </div>
-
-        <h6>Or</h6><br>
-
-        <h5>Email:</h5>
-        <a style="color: black;" href="mailto:bilkeesuardo@gmail.com"><h5>bilkeesuardo@gmail.com</h5></a>
-
-    </section>
-</body>
-</html>
-	<!---------footer-------->
-<br>
-
-
-  
-<div class="footer">
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="footer-col-1">
-
-				<h3>CONNECT WITH US</h3>
-
-				</div>
-
-			</div>
-
-			<div class="footer-col-3">
-
-			
-
-				<ul>
-
-					
-
-					<div class="app-logo">
-					 <a href="https://www.instagram.com/b___bakes/" target="_blank">
-						 <img src="images/insta.jpg" alt="Instagram Logo">
-					 </a>
-				 </div>					
-
-		<hr>
-
-		<p class="Copyright"> Copyright 2023 <br> All rights reserved.</p>
-
-	</div>
-
+    </div>
 </div>
 
-  <!------js for toggle menu----->
+<section style="color:#2D0C57; margin-top: 20px; padding-bottom: 20px; text-align: center;">
+    <h2>Contact Us</h2>
 
-  <script>
+   
+    <div style="padding-top: 30px;">
+        <h4>Have you got any complaints or concern? Please leave a mail and we shall revert back to you soon.</h4>
+        <textarea style="width: 50%; height: 150px;" name="complaints" id="complaints" placeholder="Write your complaints here..."></textarea>
+        <br>
+        <button type="button" onclick="sendComplaint()">Send</button>
+    </div>
+</section>
 
-  	
-	  const menuitems= document.getElementById('menuitems');
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>CONNECT WITH US</h3>
+            </div>
+        </div>
+        <div class="footer-col-3">
+            <ul>
+                <div class="app-logo">
+                    <a href="https://www.instagram.com/b___bakes/" target="_blank">
+                        <img src="images/insta.jpg" alt="Instagram Logo">
+                    </a>
+                </div>                   
+            </ul>
+        </div>
+        <hr>
+        <p class="Copyright"> Copyright 2023 <br> All rights reserved.</p>
+    </div>
+</div>
 
-	  let isMenuHidden = true
+<script>
+    const menuitems = document.getElementById('menuitems');
+    let isMenuHidden = true;
 
-	  const menutoggle  = () => {
+    const menutoggle = () => {
+        if (isMenuHidden) {
+            menuitems.style.transform = 'translateY(10px)';
+            isMenuHidden = false;
+        } else {
+            menuitems.style.transform = 'translateY(-320%)';
+            isMenuHidden = true;
+        }
+    }
+	
+		function sendComplaint() {
+			// Get the text from the textarea
+			const complaintsText = document.getElementById('complaints').value;
+			
+			// Send the complaints text to the email address
+			const mailtoLink = "mailto:bilkeesuardo@gmail.com?subject=Complaint&body=" + encodeURIComponent(complaintsText);
+			
+			// Open the default email client with the pre-filled email
+			window.location.href = mailtoLink;
+			
+			// Clear the textarea after sending the message
+			document.getElementById('complaints').value = "";
+		}
+	
 
-		  if(isMenuHidden){
+</script>
 
-			  menuitems.style.transform = 'translateY(10px)'
-
-			  isMenuHidden = false
-
-		  }else{
-
-			  menuitems.style.transform = 'translateY(-320%)'
-
-			  isMenuHidden = true
-
-		  }
-
-	  }
-
-  
-
-  </script>
-
-
-</body>
-</html>
 </body>
 </html>

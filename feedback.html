@@ -18,7 +18,7 @@
                 </div>
                 <nav>
                     <ul id="menuitems">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home.html">Home</a></li>
                         <li><a href="products.html">Menu</a></li>
                         <li><a href="aboutpage.html">About</a></li>
                         <li><a href="contactpage1.html">Contact</a></li>
@@ -87,6 +87,22 @@
                 }
             });
         });
+        
+		function sendComplaint() {
+			// Get the text from the textarea
+			const complaintsText = document.getElementById('complaints').value;
+			
+			// Send the complaints text to the email address
+			const mailtoLink = "mailto:bilkeesuardo@gmail.com?subject=Complaint&body=" + encodeURIComponent(complaintsText);
+			
+			// Open the default email client with the pre-filled email
+			window.location.href = mailtoLink;
+			
+			// Clear the textarea after sending the message
+			document.getElementById('complaints').value = "";
+		}
+	
+
     </script>
 </body>
 </html>
